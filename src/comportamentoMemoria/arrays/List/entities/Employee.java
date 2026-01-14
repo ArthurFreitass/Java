@@ -8,7 +8,8 @@ public class Employee {
 
     public Employee(int id, String name, double salary) {
         this.id = id;
-        if (isValid()) {
+        if (isValid(id, name, salary)) {
+
             this.name = name;
             this.salary = salary;
         } else {
@@ -33,7 +34,18 @@ public class Employee {
         this.name = name;
     }
 
-    private boolean isValid() {
+    private boolean isValid(int id, String name, double salary) {
         return name != null && !name.isEmpty() && salary > 0;
+    }
+
+
+    public void increaseSalary(double increase) {
+        if (increase > 0) {
+            salary += (increase / 100) *  salary;
+        }
+    }
+
+    public String toString() {
+        return id + ", " + name + ", " + String.format("%.2f", salary);
     }
 }

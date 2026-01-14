@@ -21,9 +21,9 @@ public class Main {
             // Cria Lista local com List
             List<Employee> employees = new ArrayList<>();
 
-            for (int i = 0; i < employees.size(); i++) {
+            for (int i = 0; i < nEmployees; i++) {
 
-                System.out.println("EMPLOYEE #"+ i +":");
+                System.out.println("EMPLOYEE #"+ (i + 1) +":");
                 System.out.print("ID: ");
                 int id = sc.nextInt();
                 sc.nextLine();
@@ -35,8 +35,33 @@ public class Main {
 
                 // Instância o objeto
 
+                System.out.println();
+
                 employees.add(new Employee(id, name, salary));
             }
+
+            System.out.print("Enter the employee id that will have salary increase: ");
+            int idEmployee = sc.nextInt();
+
+            Employee num = employees.stream().filter(x -> x.getId() == idEmployee).findFirst().orElse(null);
+
+            if (num != null) {
+                System.out.print("Enter the percentage: ");
+                double percentage = sc.nextDouble();
+
+                num.increaseSalary(percentage);
+
+            } else {
+                System.out.println("This id does not exist!");
+            }
+
+            System.out.println();
+
+            for (Employee obj : employees) {
+                System.out.println(obj);
+            }
+        } else {
+            System.out.println("\nERROR: There must be at least one employee");
         }
 
         sc.close();
