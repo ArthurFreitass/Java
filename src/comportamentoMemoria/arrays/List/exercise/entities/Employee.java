@@ -1,4 +1,4 @@
-package comportamentoMemoria.arrays.List.entities;
+package comportamentoMemoria.arrays.List.exercise.entities;
 
 public class Employee {
 

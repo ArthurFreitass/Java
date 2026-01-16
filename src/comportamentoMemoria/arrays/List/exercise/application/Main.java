@@ -1,6 +1,6 @@
 package comportamentoMemoria.arrays.List.exercise.application;
 
-import comportamentoMemoria.arrays.List.entities.Employee;
+import comportamentoMemoria.arrays.List.exercise.entities.Employee;
 
 import java.util.ArrayList;
 import java.util.List;
