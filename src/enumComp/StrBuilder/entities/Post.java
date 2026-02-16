@@ -1,6 +1,7 @@
 package enumComp.StrBuilder.entities;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,8 @@ public class Post {
     private String title;
     private String content;
     private int likes;
+
+    private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy 'T'HH:mm:ss");
 
     private List<Comment> commentList = new ArrayList<>(); // Cria associação de comp com os comentários
 
@@ -35,6 +38,10 @@ public class Post {
         return content;
     }
 
+    public List<Comment> getCommentList() {
+        return commentList;
+    }
+
     public void setContent(String content) {
         this.content = content;
     }
@@ -47,4 +54,22 @@ public class Post {
         commentList.add(text);
     }
 
+    public void removeComment(Comment text) {
+        commentList.add(text);
+    }
+
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(title + "\n");
+        stringBuilder.append(" Likes - ");
+        stringBuilder.append(fmt.format(dateTime) + "\n");
+        stringBuilder.append(content + "\n");
+        stringBuilder.append("Comments:\n");
+
+        for (Comment c : commentList) {
+            stringBuilder.append(c.getText() + "\n");
+        }
+
+        return stringBuilder.toString();
+    }
 }

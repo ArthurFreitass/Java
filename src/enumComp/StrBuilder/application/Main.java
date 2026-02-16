@@ -40,6 +40,8 @@ public class Main {
         post2.addComment(comment_3);
         post2.addComment(comment_4);
 
+        System.out.println(post1 + "\n" + post2);
+
         sc.close();
     }
 }
