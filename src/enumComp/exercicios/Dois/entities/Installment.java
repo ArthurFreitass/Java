@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 public class Installment {
 
-    private LocalDate dueDate;
+    private LocalDate date;
     private Double amount;
 
-    public Installment(LocalDate dueDate, Double amount) {
-        this.dueDate = dueDate;
+    public Installment(LocalDate date, double amount) {
+        this.date = date;
         this.amount = amount;
     }
 
@@ -16,7 +16,12 @@ public class Installment {
         return amount;
     }
 
-    public LocalDate getDueDate() {
-        return dueDate;
+    public LocalDate getDate() {
+        return date;
+    }
+
+    @Override
+    public String toString() {
+        return "Date : " + date + "\nAmount " + amount;
     }
 }
