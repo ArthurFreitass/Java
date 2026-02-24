@@ -2,7 +2,7 @@ package polimorfismo.application;
 
 import polimorfismo.entities.Animal;
 import polimorfismo.entities.Birds;
-import polimorfismo.entities.Dog;
+import polimorfismo.entities.Dogs;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,7 +12,7 @@ public class Main {
         * para objetos de tipos específicos diferentes*/
 
         Animal an1 = new Birds("Bird", "Bem-te-vi");
-        Animal an2 = new Dog("Dog", "Rottweiller");
+        Animal an2 = new Dogs("Dog", "Rottweiller");
 
         // A utilização de métodos "iguais", instanciados em obj diferentes
         // É diferente
