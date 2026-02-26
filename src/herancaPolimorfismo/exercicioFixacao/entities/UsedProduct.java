@@ -1,35 +1,33 @@
 package exercicioFixacao.entities;
 
-public class Product {
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-    private String name;
-    private Double price;
+public class UsedProduct extends Product {
 
-    public Product(){
+    private LocalDate manufactureDate;
+
+    public UsedProduct() {
+        super();
     }
 
-    public Product(String name, Double price) {
-        this.name = name;
-        this.price = price;
+     public UsedProduct(String name, Double price, LocalDate manufactureDate) {
+        super(name, price);
+        this.manufactureDate = manufactureDate;
+     }
+
+    public LocalDate getManufactureDate() {
+        return manufactureDate;
     }
 
-    public String getName() {
-        return name;
+    public void setManufactureDate(LocalDate manufactureDate) {
+        this.manufactureDate = manufactureDate;
     }
 
-    public Double getPrice() {
-        return price;
-    }
+    private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String priceTag() {
-        return name + " $ " + String.format("%.2f", price);
+    @Override
+    public final String priceTag() {
+        return getName() + " (used) $ " + String.format("%.2f", getPrice()) + " (Manufacture date: " + fmt.format(manufactureDate) + ")";
     }
 }
