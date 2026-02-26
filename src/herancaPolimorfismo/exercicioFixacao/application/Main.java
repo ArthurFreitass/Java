@@ -1,5 +1,6 @@
 package exercicioFixacao.application;
 
+import exercicioFixacao.entities.ImportedProduct;
 import exercicioFixacao.entities.Product;
 import exercicioFixacao.entities.UsedProduct;
 
@@ -40,8 +41,15 @@ public class Main {
                 LocalDate date = LocalDate.parse(strDate, fmt);
                 productList.add(new UsedProduct(name, price, date));
             } else {
-                
+                System.out.print("Customs fee: ");
+                double customsFee = sc.nextDouble();
+                sc.nextLine();
+                productList.add(new ImportedProduct(name, price, customsFee));
             }
+        }
+        System.out.println("\nPRICE TAGS:");
+        for (Product p : productList) {
+            System.out.println(p.priceTag());
         }
     }
     final static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
