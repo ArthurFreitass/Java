@@ -1,4 +1,4 @@
-package exercicio.entities;
+package herancaPolimorfismo.exercicio.entities;
 
 public abstract class Taxpayers {
 
@@ -22,4 +22,8 @@ public abstract class Taxpayers {
     }
 
     public abstract double  tax();
+
+    public String toString() {
+        return name + " $ " + String.format("%.2f", tax()) + "\n";
+    }
 }

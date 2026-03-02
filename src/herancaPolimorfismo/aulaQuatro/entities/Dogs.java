@@ -1,10 +1,10 @@
 package polimorfismo.entities;
 
-public class Dogs extends Animal {
+public class Dogs extends polimorfismo.entities.Animal {
 
     private String species;
 
-    public Dog(String name, String species) {
+    public Dogs (String name, String species) {
         super(name);
         this.species = species;
     }

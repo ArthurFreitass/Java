@@ -1,4 +1,4 @@
-package exercicio.entities;
+package herancaPolimorfismo.exercicio.entities;
 
 public class PersonLegal extends Taxpayers {
 

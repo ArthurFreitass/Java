@@ -1,4 +1,4 @@
-package exercicioFixacao.entities;
+package herancaPolimorfismo.exercicioFixacao.entities;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

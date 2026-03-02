@@ -1,6 +1,6 @@
-package exercicioFixacao.entities;
+package herancaPolimorfismo.exercicioFixacao.entities;
 
-public class ImportedProduct extends Product {
+public class ImportedProduct extends herancaPolimorfismo.exercicioFixacao.entities.Product {
 
     private Double customsFee;
 

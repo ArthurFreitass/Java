@@ -1,4 +1,4 @@
-package exercicioFixacao.entities;
+package herancaPolimorfismo.exercicioFixacao.entities;
 
 public class Product {
 
