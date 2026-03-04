@@ -38,7 +38,15 @@ public class Reservation {
         return Math.toIntExact(Math.abs(days)); // Retorna a diferença de dias
     }
 
-    public void updateDates(LocalDate checkin, LocalDate checkout) {
+    
 
+    // Continuar
+        public void updateDates(LocalDate checkin, LocalDate checkout) {
+        if (!checkin.isAfter(this.checkin)) {
+            throw new IllegalArgumentException("O novo check-in deve ser posterior ao checkin inicial");
+        }
+        if (checkin.isBefore(this.checkout)) {
+            throw new IllegalArgumentException("O novo check-in deve ser posterior ao checkout inicial");
+        }
     }
 }
