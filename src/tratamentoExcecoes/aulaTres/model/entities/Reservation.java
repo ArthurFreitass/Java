@@ -1,6 +1,7 @@
-package tratamentoExcecoes.aulaTres.model.entities;
+package tratamentoExcecoes.aulaTres.application.entities;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Reservation {
@@ -14,39 +15,41 @@ public class Reservation {
 
     public Reservation(Integer roomNumber, LocalDate checkin, LocalDate checkout) {
         if (roomNumber == null || checkin == null || checkout == null) {
-            throw new IllegalArgumentException("Error: Invalid data! (Cannot be null)");
+            throw new IllegalArgumentException("Error: The data cannot be null.");
         }
         this.roomNumber = roomNumber;
+
+        // Deve ocorrer uma checagem aqui dentro também
+
+        if (checkin.isAfter(checkout)) {
+            throw new IllegalArgumentException("Error: Check-out must be after check-in.");
+        }
+
         this.checkin = checkin;
         this.checkout = checkout;
     }
 
-    public Integer getRoomNumber() {
-        return roomNumber;
-    }
-
-    public LocalDate getCheckin() {
-        return checkin;
-    }
-
-    public LocalDate getCheckout() {
-        return checkout;
-    }
-
+    // Deve retornar o número de dias como um int
     public int duration() {
         long days = ChronoUnit.DAYS.between(checkin, checkout);
-        return Math.toIntExact(Math.abs(days)); // Retorna a diferença de dias
+        return Math.toIntExact(days);
     }
 
-    
+    public void updateDate(LocalDate checkin, LocalDate checkout) {
+        if (checkin.isBefore(this.checkin) || checkout.isBefore(this.checkout)) {
+            throw new IllegalArgumentException("Error in reservation: the new reservation dates for update must be later than the old ones");
+        }
 
-    // Continuar
-        public void updateDates(LocalDate checkin, LocalDate checkout) {
-        if (!checkin.isAfter(this.checkin)) {
-            throw new IllegalArgumentException("O novo check-in deve ser posterior ao checkin inicial");
+        if (checkin.isAfter(checkout) || checkin.isEqual(checkout)) {
+            throw new IllegalArgumentException("Error: Check-out must be after check-in");
         }
-        if (checkin.isBefore(this.checkout)) {
-            throw new IllegalArgumentException("O novo check-in deve ser posterior ao checkout inicial");
-        }
+        this.checkin = checkin;
+        this.checkout = checkout;
+    }
+
+    private static final DateTimeFormatter FMT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+    public String toString() {
+        return "Reservation: Room " + roomNumber + ", check-in: " + FMT.format(checkin) + ", check-out: " + FMT.format(checkout) + ", "+ duration() + " nights";
     }
 }
