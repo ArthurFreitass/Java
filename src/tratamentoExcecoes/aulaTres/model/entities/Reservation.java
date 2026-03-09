@@ -36,7 +36,7 @@ public class Reservation {
     }
 
     public void updateDate(LocalDate checkin, LocalDate checkout) {
-        if (checkin.isBefore(this.checkin) || checkout.isBefore(this.checkout)) {
+        if (checkin.isBefore(LocalDate.now()) || checkout.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Error in reservation: the new reservation dates for update must be later than the old ones");
         }
 
