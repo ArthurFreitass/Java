@@ -33,7 +33,7 @@ public class NaturalPerson extends Taxpayers {
             return Math.max(0, taxToPay);
         } else {
             double percentageHealthSpending = healthcareExpenses * 0.5;
-            taxToPay -= percentageHealthSpending;
+            taxToPay -= percentageHealthSpending; // Corrigir
             return Math.max(0, taxToPay);
         }
     }
