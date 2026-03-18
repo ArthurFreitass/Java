@@ -1,0 +1,40 @@
+package entities;
+
+public class Caminhao {
+
+    private String nomeCaminhao;
+    private String marca;
+    private Double preco;
+
+    private Motorista motorista;
+
+    public Caminhao() {
+    }
+
+    public Caminhao(String nomeCaminhao, String marca, Double preco, Motorista motorista) {
+        this.marca = marca;
+        this.nomeCaminhao = nomeCaminhao;
+        this.preco = preco;
+        this.motorista = motorista;
+    }
+
+    public Double getPreco() {
+        return preco;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public String getNomeCaminhao() {
+        return nomeCaminhao;
+    }
+
+    public Motorista getMotorista() {
+        return motorista;
+    }
+
+    public void setMotorista(Motorista motorista) {
+        this.motorista = motorista;
+    }
+}
