@@ -1,0 +1,65 @@
+package entities;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Motorista {
+
+    private String nome;
+    private String cpf;
+    private LocalDate dataNascimento;
+
+    // Motorista possui uma lista com vários caminhões
+
+    private List<Caminhao> caminhaoList;
+
+    public Motorista() {
+    }
+
+    public Motorista(String nome, String cpf, LocalDate dataNascimento) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+        caminhaoList = new ArrayList<>();
+    }
+
+    public LocalDate getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public List<Caminhao> getCaminhaoList() {
+        return caminhaoList;
+    }
+
+    public void addCaminhao(Caminhao caminhao) {
+        this.caminhaoList.add(caminhao);
+        caminhao.setMotorista(this); // Adiciona de forma sincronizada
+    }
+
+    public void rmvCaminhao(Caminhao caminhao) {
+        this.caminhaoList.remove(caminhao);
+        caminhao.setMotorista(null); // Remove de forma sincronizada
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Nome: " + nome + "\n");
+        for (Caminhao caminhao : caminhaoList) {
+            sb.append(caminhao.getNomeCaminhao() + " " + caminhao.getMarca() + "\n");
+        }
+        return sb.toString();
+    }
+}
