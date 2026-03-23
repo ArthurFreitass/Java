@@ -1,0 +1,27 @@
+package application;
+
+import entities.Caminhao;
+import entities.Motorista;
+
+import java.time.LocalDate;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Motorista m = new Motorista("Edson", "11111", LocalDate.parse("2000-01-23"));
+        Caminhao c1 = new Caminhao("Scannia", "Caminhão Barato", 500000.0, m);
+        Caminhao c2 = new Caminhao("Scannia", "Caminhão Caro", 750000.0, m);
+
+        // Retorna null System.out.println(m.getCaminhaoList());
+
+        // Retorna o local do objeto Motorista mas os caminhões não foram adicionados System.out.println(c1.getMotorista());
+
+        m.addCaminhao(c1);
+        c1 = new Caminhao("S", "12", 20.0, m);
+
+        m.addCaminhao(c1);
+        m.addCaminhao(c2);
+
+        System.out.println(m);
+    }
+}
