@@ -1,0 +1,28 @@
+package trabalhandoArquivos.exercicio.application;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main {
+    public static void main(String[] args) throws IOException {
+
+        try (BufferedReader bf = new BufferedReader(new FileReader("C:/Users/Aluno_Manha/Documents/JavaStudies/src/trabalhandoArquivos/exercicio/files/file.csv"))) {
+            // Ler e instânciar os dados do arquivo
+
+            String line = bf.readLine(); // Lê uma linha caso o arquivo exista, se false = null
+
+            while (line != null) {
+                // Checa e intância os objetos
+                String [] productValues = line.split(",");
+                for (int i = 0; i < productValues.length; i++) {
+                    String name = productValues[0];
+                    double price = Double.parseDouble(productValues[1]);
+                    int quantity = Integer.parseInt(productValues[2]);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
