@@ -2,10 +2,7 @@ package trabalhandoArquivos.exercicio.application;
 
 import trabalhandoArquivos.exercicio.model.entities.Product;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -14,32 +11,47 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
         String strPath = sc.nextLine();
 
-        try (BufferedReader bw = new BufferedReader(new FileReader(strPath));) {
+        // Cria uma variável para ler o caminho que a pasta out será gerada
 
-            File path = new File(strPath);
+        File path = new File(strPath);
 
-            // Ler as linhas do arquivo
+        boolean outSucess = new File(path + "//out").mkdir();
 
-            String fileContent = bw.readLine();
+        // Cria pasta
 
-            List<Product> products = new ArrayList<>();
+        String strPathFile = sc.nextLine();
 
-            while (fileContent != null) {
-                // Instânciar Produto aqui
+        // Caminho do arquivo
 
-                String [] productValues = fileContent.split(",");
-                Double price = Double.parseDouble(productValues[1]);
-                Integer quantity = Integer.parseInt(productValues[2]);
+        try (BufferedReader bf = new BufferedReader(new FileReader(strPathFile)); // Recebe o arquivo
+             BufferedWriter bw = new BufferedWriter(new FileWriter(path + "/out/summary.csv")))  { // Criar o arquivo
 
-                products.add(new Product(productValues[0], price , quantity));
+            Locale.setDefault(Locale.US);
 
-                fileContent = bw.readLine();
+            String line = bf.readLine(); // Lê uma linha caso o arquivo exista, se false = null
+            List<Product> products = new ArrayList<>(); // Array de produtos
+
+            while (line != null) { // Verifica se existe dados no arquivo
+
+                String [] productValues = line.split(","); // Pega as partes separadas por ,
+                line = bf.readLine(); // Recebe a próxima posição
+
+                String name = productValues[0];
+                double price = Double.parseDouble(productValues[1]);
+                int quantity = Integer.parseInt(productValues[2]);
+
+                products.add(new Product(name, price, quantity)); // Instância
             }
-
+            // Criando o arquivo
+            for (Product p : products) {
+                bw.write(""+p);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
