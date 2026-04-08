@@ -1,6 +1,7 @@
 package trabalhandoArquivos.exercicio.application;
 
 import trabalhandoArquivos.exercicio.model.entities.Product;
+import trabalhandoArquivos.exercicio.model.exceptions.DomainException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -52,6 +53,10 @@ public class Main {
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
+        } catch (DomainException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            sc.close();
         }
     }
 }
