@@ -1,8 +1,8 @@
-package interfaces.documentacao.primeiraAula.application;
+package interfaces.primeiraAula.application;
 
-import interfaces.documentacao.primeiraAula.model.Util.FormatterHours;
-import interfaces.documentacao.primeiraAula.model.entities.RentalCompany;
-import interfaces.documentacao.primeiraAula.model.exceptions.DomainException;
+import interfaces.primeiraAula.model.Util.FormatterHours;
+import interfaces.primeiraAula.model.entities.RentalCompany;
+import interfaces.primeiraAula.model.exceptions.DomainException;
 
 import java.time.LocalDateTime;
 import java.util.Locale;
@@ -45,6 +45,11 @@ public class Main {
             System.out.println("Total payment: "+ String.format("%.2f", rentalCompany.totalValue()));
         } catch (DomainException e) {
             System.out.println(e.getMessage());
+        } catch (RuntimeException e) {
+            System.out.println("Unexpected error!");
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
