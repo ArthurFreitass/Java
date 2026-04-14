@@ -1,6 +1,6 @@
-package interfaces.documentacao.primeiraAula.model.entities;
+package interfaces.primeiraAula.model.entities;
 
-import interfaces.documentacao.primeiraAula.model.exception.DomainException;
+import interfaces.primeiraAula.model.exceptions.DomainException;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -102,8 +102,9 @@ public class RentalCompany {
         return Math.ceil(minutes / 60.0);
     }
 
-    private long totalDays() {
-        return ChronoUnit.DAYS.between(initialInstant, finalInstant);
+    private double totalDays() {
+        double hours = Duration.between(initialInstant, finalInstant).toHours();
+        return Math.ceil(hours / 24.0);
     }
 
     public double TAX(double amount) {
@@ -115,14 +116,14 @@ public class RentalCompany {
 
     public double basicPay() {
         if (totalHours() > 12) {
-            return diaryValue * totalDays() + valuePerHour * totalHours();
+            return diaryValue * totalDays();
         }
         return valuePerHour * totalHours();
     }
 
     public double totalValue() {
         if (totalHours() > 12) {
-            return diaryValue * totalDays() + (TAX(diaryValue));
+            return diaryValue * totalDays() + TAX(diaryValue * totalDays());
         }
         return valuePerHour * totalHours() + TAX(valuePerHour * totalHours());
     }
