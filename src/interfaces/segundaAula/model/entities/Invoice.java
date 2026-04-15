@@ -2,25 +2,45 @@ package interfaces.segundaAula.primeiraRefatoracao.model.entities;
 
 import interfaces.segundaAula.primeiraRefatoracao.model.exceptions.DomainException;
 
-public class Vehicle {
+public class Invoice {
 
-    private String modelCar;
+    private Double basicPay;
+    private Double tax;
 
-    public Vehicle(String modelCar) {
-        if (modelCar.isEmpty()) {
-            throw new DomainException("Error: The model car cannot be empty!");
+    public Invoice(Double basicPay, Double tax) {
+        if (basicPay <= 0) {
+            throw new DomainException("Error: Basic pay cannot be less or than zero!");
         }
-        this.modelCar = modelCar;
+        if (tax <= 0) {
+            throw new DomainException("Error: Tax pay cannot be less or than zero!");
+        }
+        this.basicPay = basicPay;
+        this.tax = tax;
     }
 
-    public String getModelCar() {
-        return modelCar;
+    public Double getBasicPay() {
+        return basicPay;
     }
 
-    public void setModelCar(String modelCar) {
-        if (modelCar.isEmpty()) {
-            throw new DomainException("Error: The model car cannot be empty!");
+    public void setBasicPay(Double basicPay) {
+        if (basicPay <= 0) {
+            throw new DomainException("Error: Basic pay cannot be less or than zero!");
         }
-        this.modelCar = modelCar;
+        this.basicPay = basicPay;
+    }
+
+    public Double getTax() {
+        return tax;
+    }
+
+    public void setTax(Double tax) {
+        if (tax <= 0) {
+            throw new DomainException("Error: Tax pay cannot be less or than zero!");
+        }
+        this.tax = tax;
+    }
+
+    public double totalPayment() {
+        return basicPay + tax * basicPay;
     }
 }
