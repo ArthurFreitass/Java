@@ -7,41 +7,40 @@ import java.time.Duration;
 
 public class RentalService {
 
-    private CarRental carRental;
-    public RentalService(CarRental carRental) {
-        this.carRental = carRental;
+    public RentalService() {
     }
 
-    private double calculateHours() {
+    private double calculateHours(CarRental carRental) {
         double minutes = Duration.between(carRental.getInitialInstant(), carRental.getFinalInstant()).toMinutes();
         return Math.ceil(minutes / 60.0);
     }
 
-    private double calculateDays() {
+    private double calculateDays(CarRental carRental) {
         double hours = Duration.between(carRental.getInitialInstant(), carRental.getFinalInstant()).toHours();
         return Math.ceil(hours / 24.0);
     }
 
-    private double calculateTax() {
-        double numHours = calculateHours();
+    private double calculateTax(CarRental carRental) {
+        double numHours = calculateHours(carRental);
         if (numHours > 12) {
             return 0.15;
         }
         return 0.20;
     }
 
-    private double calculateBasicPayment(double priceHour, double priceDay) {
-        double numHours = calculateHours();
+    private double calculateBasicPayment(CarRental carRental, double priceHour, double priceDay) {
+        double numHours = calculateHours(carRental);
         if (numHours > 12) {
-            double numDays = calculateDays();
+            double numDays = calculateDays(carRental);
             return priceDay * numDays;
         }
         return priceHour * numHours;
     }
 
-    public void processInvoice(double valueHour, double valueDay) {
+    public void processInvoice(CarRental carRental, double valueHour, double valueDay) {
         // Salva os valores na invoice
-        double basicPay = calculateBasicPayment(valueHour, valueDay);
-        Invoice invoice = new Invoice(basicPay, calculateTax());
+        double basicPay = calculateBasicPayment(carRental, valueHour, valueDay);
+        Invoice invoice = new Invoice(basicPay, calculateTax(carRental));
+        carRental.setInvoice(invoice);
     }
 }
