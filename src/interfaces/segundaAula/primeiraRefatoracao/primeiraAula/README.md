@@ -1,1 +1,0 @@
-Essa é a minha primeira aula sobre Interfaces, e ela irá explicar, o que é como utilizar, apresentao primeiro um problema resolvido sem interfaces, e depois o mesmo resolvido com o uso de interfaces.
