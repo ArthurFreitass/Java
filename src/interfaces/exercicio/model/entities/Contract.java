@@ -1,5 +1,7 @@
 package interfaces.exercicio.model.entities;
 
+import java.time.LocalDate;
+
 public class Contract {
 
     private Integer number;
