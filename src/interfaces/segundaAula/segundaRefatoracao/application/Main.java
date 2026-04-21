@@ -1,6 +1,5 @@
 package interfaces.segundaAula.segundaRefatoracao.application;
 
-import interfaces.segundaAula.primeiraRefatoracao.Util.Formatter;
 import interfaces.segundaAula.segundaRefatoracao.entities.CarRental;
 import interfaces.segundaAula.segundaRefatoracao.entities.Vehicle;
 import interfaces.segundaAula.segundaRefatoracao.exceptions.DomainException;
@@ -8,6 +7,7 @@ import interfaces.segundaAula.segundaRefatoracao.service.BrasilTaxService;
 import interfaces.segundaAula.segundaRefatoracao.service.RentalService;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -26,10 +26,10 @@ public class Main {
             String carModel = sc.nextLine();
 
             System.out.print("Retirada (dd/MM/yyyy HH:mm): ");
-            LocalDateTime pickup = LocalDateTime.parse(sc.nextLine(), Formatter.fmt());
+            LocalDateTime pickup = LocalDateTime.parse(sc.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
 
             System.out.print("Retorno (dd/MM/yyyy HH:mm): ");
-            LocalDateTime deliveryCar = LocalDateTime.parse(sc.nextLine(), Formatter.fmt());
+            LocalDateTime deliveryCar = LocalDateTime.parse(sc.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
 
             CarRental carRental = new CarRental(pickup, deliveryCar, new Vehicle(carModel));
 
