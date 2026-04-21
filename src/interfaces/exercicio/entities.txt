@@ -1,0 +1,2 @@
+contrato = [ numero, data do contrato e valor total ]
+parcelas = [ numero de parcelas, associação contrato ]
