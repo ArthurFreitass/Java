@@ -1,4 +1,4 @@
-package ecommerce.model.service;
+package interfaces.ecommerce.model.service;
 
 import ecommerce.model.entities.Order;
 

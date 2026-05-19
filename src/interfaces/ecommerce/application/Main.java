@@ -1,9 +1,9 @@
-package ecommerce.application;
+package interfaces.ecommerce.application;
 
-import ecommerce.model.service.LoggiShipping;
-import ecommerce.model.service.NoDiscount;
 import ecommerce.model.entities.Order;
-import ecommerce.model.service.OrderProcessor;
+import interfaces.ecommerce.model.service.LoggiShipping;
+import interfaces.ecommerce.model.service.NoDiscount;
+import interfaces.ecommerce.model.service.OrderProcessor;
 
 import java.time.LocalDate;
 import java.util.Locale;

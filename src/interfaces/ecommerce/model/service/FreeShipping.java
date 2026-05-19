@@ -1,4 +1,4 @@
-package ecommerce.model.service;
+package interfaces.ecommerce.model.service;
 
 public class FreeShipping implements ShippingService {
     public FreeShipping() {
