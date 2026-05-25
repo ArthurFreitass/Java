@@ -1,0 +1,1 @@
+# Diretório voltado para o estudo de como funciona, e o que é a interface comparable'
