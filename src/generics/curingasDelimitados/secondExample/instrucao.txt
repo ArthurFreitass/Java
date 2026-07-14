@@ -1,0 +1,4 @@
+Criar um método que permita copiar os elementos de uma Lista,
+exemplo Int e conseguir enviá-los para uma List<> mais genérica (se possível)
+
+List<Integer> listInt = (1,2,3,4,5,6); e enviá-los para List<Object> list;
