@@ -1,0 +1,3 @@
+Criar um método que retorne a soma de todas as áreas de uma List<Shape>
+
+Generics Delimitados pra List<> são List<? extends Classe>
