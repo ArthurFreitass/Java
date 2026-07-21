@@ -6,14 +6,16 @@ import java.util.List;
 
 public class Refatoration {
     public static void main(String[] args) {
-
         try {
 
             List<Object> listObj = new ArrayList<>();
+
             copyElements(getListInt(), listObj);
             copyElements(getListDouble(), listObj);
 
-            System.out.println(listObj);
+            System.out.println();
+
+            printList(listObj);
 
         } catch (RuntimeException e) {
             System.out.println(e.getMessage());
@@ -37,9 +39,9 @@ public class Refatoration {
         return myListDouble;
     }
 
-    private void printList(List<?> list) {
+    private static void printList(List<?> list) {
         for (Object item : list) {
-            System.out.println(item);
+            System.out.print(item + " ");
         }
     }
 }
