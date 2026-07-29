@@ -50,4 +50,9 @@ public class Car {
     public int hashCode() {
         return Objects.hash(name, model, price);
     }
+
+    @Override
+    public String toString() {
+        return name + " " + model;
+    }
 }

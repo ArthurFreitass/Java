@@ -22,5 +22,9 @@ public class Main {
         System.out.println("Contains key 'testCar' in carSales "+ carSales.containsKey(testCar));
 
         // Se o hashCode equals() não for implementado retorna false
+
+        for (Car item : carSales.keySet()) {
+            System.out.println(item + " " + carSales.get(item));
+        }
     }
 }
