@@ -1,12 +1,11 @@
-package lambda.fixacao.application;
+package lambda.fixacaoComparator.application;
 
-import lambda.fixacao.application.entities.Product;
-import lambda.fixacao.application.entities.ProductNameComparator;
-import lambda.fixacao.application.entities.ProductPriceComparator;
-import lambda.fixacao.application.entities.ProductQuantityComparator;
+import lambda.fixacaoComparator.application.entities.Product;
+import lambda.fixacaoComparator.application.entities.ProductNameComparator;
+import lambda.fixacaoComparator.application.entities.ProductPriceComparator;
+import lambda.fixacaoComparator.application.entities.ProductQuantityComparator;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class Main {

@@ -1,6 +1,6 @@
 package lambda.consumer.application;
 
-import lambda.fixacao.application.entities.Product;
+import lambda.fixacaoComparator.application.entities.Product;
 
 import java.util.ArrayList;
 import java.util.List;

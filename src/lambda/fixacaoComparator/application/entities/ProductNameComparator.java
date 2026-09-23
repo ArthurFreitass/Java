@@ -1,4 +1,4 @@
-package lambda.fixacao.application.entities;
+package lambda.fixacaoComparator.application.entities;
 
 import java.util.Comparator;
 
