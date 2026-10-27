@@ -1,4 +1,4 @@
-package jdbc.db;
+package jdbc.exemplo.db;
 
 public class DbException extends RuntimeException {
     public DbException(String message) {
